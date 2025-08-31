@@ -26,16 +26,12 @@ const domain_mappings = {
 const redirect_paths = ['/', '/login', '/signup', '/copilot'];
 
 // 获取当前主机名的前缀，用于匹配反向映射
-// function getProxyPrefix(host) {
-  // 检查主机名是否以 gh. 开头
-  // if (host.startsWith('gh.')) {
-    // return 'gh.';
-  // }
-  
-  // 检查其他映射前缀
-  for (const prefix of Object.values(domain_mappings)) {
-    if (host.startsWith(prefix)) {
-      return prefix;
+function getProxyPrefix(host) {
+  // 首先检查完整匹配（针对像 gh.byzz.tech 这样的完整域名）
+  for (const [original_domain, proxy_domain] of Object.entries(domain_mappings)) {
+    if (host === proxy_domain || host.startsWith(proxy_domain + '.') || 
+        (proxy_domain.endsWith('.') && host.startsWith(proxy_domain))) {
+      return proxy_domain;
     }
   }
   
@@ -79,9 +75,10 @@ async function modifyResponse(response, host_prefix, effective_hostname) {
 
   // 处理相对路径
   if (host_prefix === 'gh.byzz.tech') {
+    // 使用更兼容的正则表达式替换相对路径
     text = text.replace(
-      /(?<=["'])\/(?!\/|[a-zA-Z]+:)/g,
-      `https://${effective_hostname}/`
+      /(["'])\/(?!\/|[a-zA-Z]+:)/g,
+      `$1https://${effective_hostname}/`
     );
   }
 
