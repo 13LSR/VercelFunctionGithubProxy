@@ -2,12 +2,12 @@
 
 // 域名映射配置
 const domain_mappings = {
-  'github.com': 'v-gh.byzxj.dpdns.org',
-  'avatars.githubusercontent.com': 'v-avatars-githubusercontent-com.byzxj.dpdns.org',
-  'github.githubassets.com': 'v-github-githubassets-com.byzxj.dpdns.org',
-  'collector.github.com': 'v-collector-github-com.byzxj.dpdns.org',
-  'api.github.com': 'v-api-github-com.byzxj.dpdns.org',
-  'raw.githubusercontent.com': 'v-raw-githubusercontent-com.byzxj.dpdns.org',
+  'github.com': 'v-gh.byzz.tech',
+  'avatars.githubusercontent.com': 'v-avatars-githubusercontent-com.byzz.tech',
+  'github.githubassets.com': 'v-github-githubassets-com.byzz.tech',
+  'collector.github.com': 'v-collector-github-com.byzz.tech',
+  'api.github.com': 'v-api-github-com.byzz.tech',
+  'raw.githubusercontent.com': 'v-raw-githubusercontent-com.byzz.tech',
   'gist.githubusercontent.com': 'v-gist-githubusercontent-com.',
   'github.io': 'v-github-io.',
   'assets-cdn.github.com': 'v-assets-cdn-github-com.',
